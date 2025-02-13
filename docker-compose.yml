@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  catalogo-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: catalogo-web
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=production
+      - VITE_HOST=82.29.58.50
+    volumes:
+      - .env:/usr/share/nginx/html/.env:ro
+    restart: unless-stopped
+    networks:
+      - wms-network
+
+networks:
+  wms-network:
+    external: true
