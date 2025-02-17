@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { API_BACK } from "../config";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { FiPlus } from "react-icons/fi";
 
 interface Speaker {
   id: number;
@@ -60,6 +61,10 @@ const Speakers = () => {
     }
   };
 
+  const handleCreateSpeaker = () => {
+    navigate("/create-speaker");
+  };
+
   return (
     <div className="min-h-screen w-screen bg-gray-100">
       <Navbar />
@@ -90,6 +95,15 @@ const Speakers = () => {
       
         <div className="w-full max-w-5xl bg-white p-6 sm:p-8 rounded-xl shadow-lg"
           >
+          <div className="flex justify-center sm:justify-end gap-2 mb-4">
+            <button
+              onClick={handleCreateSpeaker}
+              className="flex items-center gap-2 bg-green-500 text-white px-3 py-2 rounded-md text-sm hover:bg-green-600 transition"
+            >
+              <FiPlus size={16} />
+              New Speaker
+            </button>
+          </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-4 text-center">
             Speakers List
           </h1>

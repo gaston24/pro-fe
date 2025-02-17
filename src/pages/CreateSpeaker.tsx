@@ -4,8 +4,7 @@ import { API_BACK } from "../config";
 
 const CreateSpeaker = () => {
   const navigate = useNavigate();
-  const [speaker, setSpeaker] = useState({ title: "", summary: "", date_time: "", link: "", capacity: 0, speaker_id: ""});
-  const [speakers, setSpeakers] = useState<{ id: string; name: string }[]>([]);
+  const [speaker, setSpeaker] = useState({ name: "", email: "", phone: "" });
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   useEffect(() => {
@@ -26,16 +25,20 @@ const CreateSpeaker = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch(`${API_BACK}/api/speakers/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(speaker),
+        body: JSON.stringify({
+          name: speaker.name,
+          email: speaker.email,
+          phone: speaker.phone,
+        }),
       });
-
+  
       if (!response.ok) throw new Error("Error while creating speaker");
-
+  
       setShowSuccessModal(true);
     } catch (error) {
       alert("Error while creating speaker");
@@ -65,75 +68,37 @@ const CreateSpeaker = () => {
   
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <label className="block text-lg font-medium text-gray-700">Title</label>
+            <label className="block text-lg font-medium text-gray-700">Name</label>
               <input
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-lg"
-                value={speaker.title}
-                onChange={(e) => setSpeaker({ ...speaker, title: e.target.value })}
+                value={speaker.name}
+                onChange={(e) => setSpeaker({ ...speaker, name: e.target.value })}
                 required
               />
             </div>
   
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Summary</label>
-              <textarea
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                value={speaker.summary}
-                onChange={(e) => setSpeaker({ ...speaker, summary: e.target.value })}
-                required
-              />
+              <label className="block text-sm font-medium text-gray-700">Email</label>
+                <input
+                  type="email"
+                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+                  value={speaker.email}
+                  onChange={(e) => setSpeaker({ ...speaker, email: e.target.value })}
+                  required
+                />
             </div>
   
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Date</label>
-              <input
-                type="datetime-local"
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                value={speaker.date_time}
-                onChange={(e) => setSpeaker({ ...speaker, date_time: e.target.value })}
-                required
-              />
+            <label className="block text-sm font-medium text-gray-700">Phone</label>
+            <input
+              type="tel"
+              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+              value={speaker.phone}
+              onChange={(e) => setSpeaker({ ...speaker, phone: e.target.value })}
+              required
+            />
             </div>
-  
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Available Places</label>
-              <input
-                type="number"
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                value={speaker.capacity}
-                onChange={(e) => setSpeaker({ ...speaker, capacity: Number(e.target.value) })}
-                required
-              />
-            </div>
-  
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Link to Speaker</label>
-              <input
-                type="url"
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                value={speaker.link}
-                onChange={(e) => setSpeaker({ ...speaker, link: e.target.value })}
-                required
-              />
-            </div>
-  
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Speaker</label>
-              <select
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                value={speaker.speaker_id}
-                onChange={(e) => setSpeaker({ ...speaker, speaker_id: e.target.value })}
-                required
-              >
-                <option value="">Choose Speaker</option>
-                {speakers.map((speaker) => (
-                  <option key={speaker.id} value={speaker.id}>
-                    {speaker.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-  
+        
             <div className="flex justify-end mt-6">
               <button
                 type="submit"
