@@ -1,97 +1,25 @@
 {
-"buttons": 
-    [
-        {
-            "label": "Vendedores",
-            "route": "/Sellers",
-            "icon": "Users",
-            "color": "bg-blue-600",
-            "visibleFor": ["administrador"]
-        },
-        {
-            "label": "Clientes",
-            "route": "/Clients",
-            "icon": "Users",
-            "color": "bg-green-600",
-            "visibleFor": ["administrador", "vendedor"]
-        },
-        {
-            "label": "Nuevo Artículo de Catálogo",
-            "route": "/ArticleNew",
-            "icon": "PlusSquare",
-            "color": "bg-yellow-700",
-            "visibleFor": ["administrador", "vendedor"]
-        },
-        {
-            "label": "Pedidos de Catálogo",
-            "route": "/Orders",
-            "icon": "FileText",
-            "color": "bg-red-600",
-            "visibleFor": ["administrador", "vendedor", "cliente"]
-        },
-        {
-            "label": "Catálogo de Productos",
-            "route": "/Articles",
-            "icon": "Package",
-            "color": "bg-yellow-600",
-            "visibleFor": ["administrador", "vendedor"]
-        },
-        {
-            "label": "Pedido de Catálogo",
-            "route": "/NewOrder",
-            "icon": "ShoppingCart",
-            "color": "bg-red-700",
-            "visibleFor": ["administrador", "vendedor", "cliente"]
-        },
-        {
-            "label": "Listar Documentos",
-            "route": "/ListDocuments",
-            "icon": "FileText",
-            "color": "bg-purple-600",
-            "visibleFor": ["administrador", "vendedor", "cliente"]
-        },
-        {
-            "label": "Nuevo Remito",
-            "route": "/NewDocument/remito",
-            "icon": "FileText",
-            "color": "bg-teal-600",
-            "visibleFor": ["administrador", "vendedor"]
-        },
-        {
-            "label": "Nuevo Pedido",
-            "route": "/NewDocument/pedido",
-            "icon": "ShoppingCart",
-            "color": "bg-emerald-600",
-            "visibleFor": ["administrador", "vendedor", "cliente"]
-        },
-        {
-            "label": "Facturar",
-            "route": "/Billing",
-            "icon": "Receipt",
-            "color": "bg-indigo-600",
-            "visibleFor": ["administrador", "vendedor"]
-        },
-        {
-            "label": "Ubicaciones",
-            "route": "/Locations",
-            "icon": "MapPin",
-            "color": "bg-gray-700",
-            "visibleFor": ["administrador", "vendedor"]
-        },
-        {
-            "label": "Maestro de Artículos",
-            "route": "/MasterArticles",
-            "icon": "Package",
-            "color": "bg-orange-600",
-            "visibleFor": ["administrador", "vendedor"]
-        },
-        {
-            "label": "Stock",
-            "route": "/Stock",
-            "icon": "Layers",
-            "color": "bg-teal-600",
-            "visibleFor": ["administrador", "vendedor"]
-        }
-          
+    "buttons": [
+      {
+        "label": "Conferencias",
+        "route": "/conferences",
+        "icon": "Users",
+        "color": "bg-blue-600",
+        "visibleFor": ["administrador", "publico"]
+      },          
+      {
+        "label": "Administrar Conferencias",
+        "route": "/admin/conferences",
+        "icon": "PlusSquare",
+        "color": "bg-yellow-700",
+        "visibleFor": ["administrador"]
+      },
+      {
+        "label": "Administrar Conferenciantes",
+        "route": "/admin/Speakers",
+        "icon": "FileText",
+        "color": "bg-red-600",
+        "visibleFor": ["administrador"]
+      }
     ]
 }
