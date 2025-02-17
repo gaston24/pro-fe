@@ -185,7 +185,7 @@ const Conferences = () => {
           </div>
         )}
         <div className="w-full max-w-5xl bg-white p-6 sm:p-8 rounded-xl shadow-lg">
-        <div className="flex justify-end gap-2 mb-4">
+        <div className="flex justify-center sm:justify-end gap-2 mb-4">
   
         <button
             onClick={() => navigate("/create-conference")}
@@ -273,6 +273,7 @@ const Conferences = () => {
             </tbody>
             </table>
           </div>
+
           <div className="block sm:hidden">
             {conferences.map((conference) => (
               <div key={conference.id} className="bg-white shadow-md rounded-lg p-4 mb-3 border-l-4 border-blue-500">
@@ -287,9 +288,33 @@ const Conferences = () => {
                 <a href={conference.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
                   Show Conference
                 </a>
+
+                <div className="flex justify-end gap-2 mt-3">
+                  <button
+                    onClick={() => exportAttendees(conference.id)}
+                    className="border border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-3 py-2 rounded-lg transition"
+                    title="Listar Asistentes"
+                  >
+                    <FiDownload size={18} />
+                  </button>
+                  <button
+                    onClick={() => handleEdit(conference.id)}
+                    className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-3 py-2 rounded-lg transition"
+                    title="Editar"
+                  >
+                    <FiEdit size={18} />
+                  </button>
+                  <button
+                    onClick={() => handleDelete(conference.id)}
+                    className="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white px-3 py-2 rounded-lg transition"
+                    title="Eliminar"
+                  >
+                    <FiTrash2 size={18} />
+                  </button>
+                </div>
               </div>
             ))}
-          </div>
+          </div>          
         </div>
       </div>
       {selectedConference && (
