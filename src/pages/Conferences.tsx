@@ -151,14 +151,20 @@ const Conferences = () => {
                 <h3 className="text-lg font-bold text-gray-900">{conference.title}</h3>
                 <p className="text-sm text-gray-600 mt-1">{conference.summary}</p>
                 <p className="text-sm text-gray-600 mt-1">
-                  <span className="font-semibold text-gray-700">Fecha:</span> {new Date(conference.date_time).toLocaleString()}
+                  <span className="font-semibold text-gray-700">📅 Fecha:</span> {new Date(conference.date_time).toLocaleString()}
                 </p>
                 <p className="text-sm text-gray-600 mt-1">
-                  <span className="font-semibold text-gray-700">Cupos Disponibles:</span> {conference.capacity}
+                  <span className="font-semibold text-gray-700">🎟 Cupos Disponibles:</span> {conference.capacity}
                 </p>
-                <a href={conference.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
-                  Ver Conferencia
-                </a>
+
+                <div className="flex justify-end mt-3">
+                  <button
+                    onClick={() => setSelectedConference(conference)}
+                    className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-4 py-2 rounded-lg transition"
+                  >
+                    Ver Detalles
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -198,18 +204,19 @@ const Conferences = () => {
         {successMessage && <p className="text-green-500 text-sm mt-2">{successMessage}</p>}
       </div>
 
-      <div className="flex justify-between items-center mt-4">
+      <div className="mt-4 flex flex-col sm:flex-row sm:justify-between items-center gap-3">
         <a
           href={selectedConference.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-600 underline"
+          className="text-blue-600 underline w-full sm:w-auto text-center"
         >
           Ir a la Conferencia
         </a>
+        
         <button
           onClick={registerForConference}
-          className={`px-4 py-2 rounded ${
+          className={`w-full sm:w-auto px-4 py-2 rounded text-center ${
             selectedConference.capacity > 0 && attendeeName.trim() && attendeeEmail.trim()
               ? "bg-green-500 text-white"
               : "bg-gray-400 text-gray-700 cursor-not-allowed"
@@ -223,9 +230,10 @@ const Conferences = () => {
         >
           Registrarse como Asistente
         </button>
+        
         <button
           onClick={() => setSelectedConference(null)}
-          className="bg-red-500 text-white px-4 py-2 rounded"
+          className="w-full sm:w-auto bg-red-500 text-white px-4 py-2 rounded text-center"
         >
           Cerrar
         </button>
