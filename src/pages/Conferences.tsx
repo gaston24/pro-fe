@@ -25,7 +25,7 @@ const Conferences = () => {
     const fetchConferences = async () => {
       try {
         const response = await fetch(`${API_BACK}/api/conferences/`);
-        if (!response.ok) throw new Error("Error al cargar conferencias");
+        if (!response.ok) throw new Error("Error loading lectures");
   
         const data = await response.json();
         setConferences(data);
@@ -43,7 +43,7 @@ const Conferences = () => {
     if (!selectedConference) return;
   
     if (!attendeeName.trim() || !attendeeEmail.trim()) {
-      setFormError("El nombre y el correo electrónico son obligatorios.");
+      setFormError("Name and email are required.");
       return;
     }
   
@@ -61,7 +61,7 @@ const Conferences = () => {
       console.log(data.id);
 
       if (!response.ok) {
-        throw new Error("Error al registrarse en la conferencia.");
+        throw new Error("Error registering for the conference.");
       }
       console.log(selectedConference.id,'scid');
       const registerToConferenceResponse = await fetch(`${API_BACK}/api/attendees/${data.id}/register-to-conference`, {
@@ -73,10 +73,10 @@ const Conferences = () => {
       });
       console.log(registerToConferenceResponse, 'rfc');
       if (!registerToConferenceResponse.ok) {
-        throw new Error("Error al registrarse en la conferencia.");
+        throw new Error("Error registering for the conference.");
       }
 
-      setSuccessMessage("¡Te has registrado exitosamente!");
+      setSuccessMessage("You have successfully registered!");
       setFormError("");
   
       setConferences(prevConferences =>
@@ -93,7 +93,7 @@ const Conferences = () => {
       setTimeout(() => setSuccessMessage(""), 3000);
     } catch (error) {
       console.error(error);
-      setFormError("Hubo un problema al registrarse.");
+      setFormError("There was a problem registering.");
     }
   };
 
@@ -104,24 +104,24 @@ const Conferences = () => {
       <div className="flex justify-center items-center h-full">
         <div className="w-full max-w-5xl bg-white p-6 sm:p-8 rounded-xl shadow-lg">
         <h1 className="text-3xl font-bold text-gray-900 mb-4 text-center">
-          Lista de Conferencias
+          Conferences List
         </h1>
 
-          {loading && <p className="text-center text-gray-600">Cargando...</p>}
+          {loading && <p className="text-center text-gray-600">Loading...</p>}
           {error && <p className="text-center text-red-500">{error}</p>}
           {!loading && !error && conferences.length === 0 && (
-            <p className="text-center text-gray-600">No hay conferencias disponibles</p>
+            <p className="text-center text-gray-600">No conferences available</p>
           )}
 
           <div className="hidden sm:block overflow-x-auto">
           <table className="w-full table-auto border border-gray-300 rounded-lg shadow-md">
             <thead>
             <tr className="bg-gray-900 text-white text-lg">
-                <th className="border border-gray-300 px-4 py-2">Título</th>
-                <th className="border border-gray-300 px-4 py-2">Resumen</th>
-                <th className="border border-gray-300 px-4 py-2">Fecha y Hora</th>
-                <th className="border border-gray-300 px-4 py-2">Cupos Disponibles</th>
-                <th className="border border-gray-300 px-4 py-2">Enlace</th>
+                <th className="border border-gray-300 px-4 py-2">Title</th>
+                <th className="border border-gray-300 px-4 py-2">Summary</th>
+                <th className="border border-gray-300 px-4 py-2">Date</th>
+                <th className="border border-gray-300 px-4 py-2">Available Places</th>
+                <th className="border border-gray-300 px-4 py-2">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -136,7 +136,7 @@ const Conferences = () => {
                     onClick={() => setSelectedConference(conference)}
                     className="text-blue-600 hover:text-blue-800 text-xs underline transition"
                   >
-                    Ver Detalles
+                    View Details
                   </button>
                   </td>
                 </tr>
@@ -151,13 +151,13 @@ const Conferences = () => {
                 <h3 className="text-lg font-bold text-gray-900">{conference.title}</h3>
                 <p className="text-sm text-gray-600 mt-1">{conference.summary}</p>
                 <p className="text-sm text-gray-600 mt-1">
-                  <span className="font-semibold text-gray-700">Fecha:</span> {new Date(conference.date_time).toLocaleString()}
+                  <span className="font-semibold text-gray-700">Date:</span> {new Date(conference.date_time).toLocaleString()}
                 </p>
                 <p className="text-sm text-gray-600 mt-1">
-                  <span className="font-semibold text-gray-700">Cupos Disponibles:</span> {conference.capacity}
+                  <span className="font-semibold text-gray-700">Available Places:</span> {conference.capacity}
                 </p>
                 <a href={conference.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
-                  Ver Conferencia
+                  Show Conference
                 </a>
               </div>
             ))}
@@ -171,27 +171,27 @@ const Conferences = () => {
         <h2 className="text-3xl font-bold text-gray-900">{selectedConference.title}</h2>
         <p className="text-gray-600 mt-2">{selectedConference.summary}</p>
         <div className="mt-4 flex justify-center space-x-4">
-          <p className="text-gray-700"><strong>📅 Fecha:</strong> {new Date(selectedConference.date_time).toLocaleString()}</p>
-          <p className="text-gray-700"><strong>🎟 Cupos:</strong> {selectedConference.capacity}</p>
+          <p className="text-gray-700"><strong>📅 Date:</strong> {new Date(selectedConference.date_time).toLocaleString()}</p>
+          <p className="text-gray-700"><strong>🎟 Available Places:</strong> {selectedConference.capacity}</p>
         </div>
       </div>
       <div className="mt-4">
-        <label className="block text-sm font-medium text-gray-700">Nombre</label>
+        <label className="block text-sm font-medium text-gray-700">Name</label>
         <input
           type="text"
           value={attendeeName}
           onChange={(e) => setAttendeeName(e.target.value)}
           className="w-full border border-gray-300 p-3 rounded-lg mt-2 focus:ring-2 focus:ring-blue-500 outline-none"
-          placeholder="👤 Ingresa tu nombre"
+          placeholder="👤 Insert Name"
         />
 
-        <label className="block text-sm font-medium text-gray-700 mt-2">Correo Electrónico</label>
+        <label className="block text-sm font-medium text-gray-700 mt-2">Email</label>
         <input
           type="email"
           value={attendeeEmail}
           onChange={(e) => setAttendeeEmail(e.target.value)}
           className="w-full border border-gray-300 p-2 rounded mt-1"
-          placeholder="Ingresa tu email"
+          placeholder="Insert Email"
           required
         />
         {formError && <p className="text-red-500 text-sm mt-2">{formError}</p>}
@@ -205,7 +205,7 @@ const Conferences = () => {
           rel="noopener noreferrer"
           className="text-blue-600 underline"
         >
-          Ir a la Conferencia
+          Go to Conference
         </a>
         <button
           onClick={registerForConference}
@@ -221,13 +221,13 @@ const Conferences = () => {
             !!successMessage
           }
         >
-          Registrarse como Asistente
+          Register as Attendee
         </button>
         <button
           onClick={() => setSelectedConference(null)}
           className="bg-red-500 text-white px-4 py-2 rounded"
         >
-          Cerrar
+          Close
         </button>
       </div>
     </div>

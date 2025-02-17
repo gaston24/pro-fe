@@ -35,11 +35,11 @@ const EditSpeaker = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
       <div className="fixed inset-0 flex items-center justify-center">
         <div className="w-full max-w-2xl mx-4 bg-white rounded-lg shadow-lg p-6 overflow-y-auto max-h-[90vh]">
-          <h1 className="text-3xl font-bold text-center text-gray-900 mb-6">Editar Conferenciante</h1>
+          <h1 className="text-3xl font-bold text-center text-gray-900 mb-6">Edit Speaker</h1>
   
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <label className="block text-lg font-medium text-gray-700">Nombre</label>
+              <label className="block text-lg font-medium text-gray-700">Name</label>
               <input
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-lg"
                 value={speaker.name}
@@ -49,7 +49,7 @@ const EditSpeaker = () => {
             </div>
   
             <div className="space-y-2">
-              <label className="block text-lg font-medium text-gray-700">Correo Electrónico</label>
+              <label className="block text-lg font-medium text-gray-700">Email</label>
               <input
                 type="email"
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-lg"
@@ -60,7 +60,7 @@ const EditSpeaker = () => {
             </div>
   
             <div className="space-y-2">
-              <label className="block text-lg font-medium text-gray-700">Teléfono</label>
+              <label className="block text-lg font-medium text-gray-700">Phone</label>
               <input
                 type="text"
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-lg"
@@ -77,7 +77,7 @@ const EditSpeaker = () => {
                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
                 transition-transform transform hover:scale-105 text-lg font-semibold"
               >
-                Guardar Cambios
+                Save Changes
               </button>
             </div>
           </form>

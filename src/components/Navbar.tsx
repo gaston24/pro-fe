@@ -24,13 +24,13 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="w-full bg-gray-50 shadow-sm py-3 px-4">
+    <nav className="w-full bg-gray-50 shadow-sm py-3 px-4 mb-5">
       
       <div className="hidden lg:flex w-full max-w-[1200px] mx-auto items-center justify-between">
         <div className="flex gap-6 flex-grow justify-center">
           <Link to="/home" className="flex items-center text-blue-600 hover:opacity-80">
             <Home className="w-5 h-5" />
-            <span className="ml-2 text-sm font-medium">Inicio</span>
+            <span className="ml-2 text-sm font-medium">Home</span>
           </Link>
 
           {navLinks.map(link => (

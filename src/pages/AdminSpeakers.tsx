@@ -21,7 +21,7 @@ const Speakers = () => {
     const fetchSpeakers = async () => {
       try {
         const response = await fetch(`${API_BACK}/api/speakers/`);
-        if (!response.ok) throw new Error("Error al cargar conferenciantes");
+        if (!response.ok) throw new Error("Error loading speakers");
 
         const data = await response.json();
         setSpeakers(data);
@@ -40,19 +40,19 @@ const Speakers = () => {
   };
 
   const handleDelete = async (id: number) => {
-    const confirmDelete = window.confirm("¿Estás seguro de que quieres eliminar este conferenciante?");
+    const confirmDelete = window.confirm("Are you sure you want to delete this speaker?");
     if (!confirmDelete) return;
 
     try {
       const response = await fetch(`${API_BACK}/api/speakers/${id}`, {
         method: "DELETE",
       });
-      if (!response.ok) throw new Error("Error al eliminar el conferenciante");
+      if (!response.ok) throw new Error("Error deleting speaker");
 
       const updatedSpeakers = speakers.filter((speaker) => speaker.id !== id);
       setSpeakers(updatedSpeakers);
     } catch (err: any) {
-      alert("Hubo un error al eliminar el conferenciante.");
+      alert("There was an error deleting the speaker.");
     }
   };
 
@@ -63,22 +63,22 @@ const Speakers = () => {
       <div className="flex justify-center items-center h-full">
         <div className="w-full max-w-5xl bg-white p-6 sm:p-8 rounded-xl shadow-lg">
           <h1 className="text-3xl font-bold text-gray-900 mb-4 text-center">
-            Lista de Conferenciantes
+            Speakers List
           </h1>
-          {loading && <p className="text-center text-gray-600">Cargando...</p>}
+          {loading && <p className="text-center text-gray-600">Loading...</p>}
           {error && <p className="text-center text-red-500">{error}</p>}
           {!loading && !error && speakers.length === 0 && (
-            <p className="text-center text-gray-600">No hay conferenciantes disponibles</p>
+            <p className="text-center text-gray-600">There are no speakers available</p>
           )}
 
           <div className="hidden sm:block overflow-x-auto">
             <table className="w-full table-auto border-collapse border border-gray-200">
               <thead>
                 <tr className="bg-black text-white">
-                  <th className="border border-gray-300 px-4 py-2">Nombre</th>
+                  <th className="border border-gray-300 px-4 py-2">Name</th>
                   <th className="border border-gray-300 px-4 py-2">Email</th>
-                  <th className="border border-gray-300 px-4 py-2">Teléfono</th>
-                  <th className="border border-gray-300 px-4 py-2">Acción</th>
+                  <th className="border border-gray-300 px-4 py-2">Phone</th>
+                  <th className="border border-gray-300 px-4 py-2">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -91,14 +91,14 @@ const Speakers = () => {
                       <button
                         onClick={() => handleEdit(speaker.id)}
                         className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-3 py-2 rounded-lg shadow-md transition transform hover:scale-105 flex items-center justify-center"
-                        title="Editar"
+                        title="Edit"
                       >
                         <FiEdit size={18} />
                       </button>
                       <button
                         onClick={() => handleDelete(speaker.id)}
                         className="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white px-3 py-2 rounded-lg shadow-md transition transform hover:scale-105 flex items-center justify-center"
-                        title="Eliminar"
+                        title="Delete"
                       >
                         <FiTrash2 size={18} />
                       </button>
