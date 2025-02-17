@@ -9,6 +9,7 @@ import CreateConference from "./pages/CreateConference";
 import AdminSpeakers from "./pages/AdminSpeakers";
 import EditSpeaker from "./pages/EditSpeaker";
 import Register from "./pages/Register";
+import CreateSpeaker from "./pages/CreateSpeaker";
 
 function App() {
   const navigate = useNavigate();
@@ -34,7 +35,8 @@ function App() {
       <Route path="/create-conference" element={<CreateConference />} />
       <Route path="/Admin/Speakers" element={<AdminSpeakers />} />
       <Route path="/edit-speaker/:id" element={<EditSpeaker />} />
-      <Route path="/Register" element={<Register />} />          
+      <Route path="/Register" element={<Register />} />
+      <Route path="/create-speaker" element={<CreateSpeaker />} />          
     </Routes>
   );
 }
