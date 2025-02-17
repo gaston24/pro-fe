@@ -8,7 +8,8 @@ const Home: React.FC = () => {
   const [userRole, setUserRole] = useState<string | null>(null);
 
   useEffect(() => {
-    const storedRole = localStorage.getItem("userRole");
+    const storedRole = localStorage.getItem("userRole").replace(/"/g, "");
+
     setUserRole(storedRole);
   }, []);
 
@@ -46,7 +47,8 @@ const Home: React.FC = () => {
       <div className="w-full flex items-center justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-4xl">
           {menuConfig.buttons
-            .filter((btn) => !userRole || btn.visibleFor.includes(userRole))
+            // .filter((btn) => !userRole || btn.visibleFor.includes(userRole))
+            .filter(btn => btn.visibleFor.includes(userRole || ""))
             .map((btn) => {
               const Icon = Icons[btn.icon];
               return (

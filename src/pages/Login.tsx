@@ -36,8 +36,10 @@ const Login = () => {
         throw new Error(data?.error === "Unauthorized" ? "Invalid credentials" : data?.error ?? "Error");
       }
 
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("token", data.token);  
+      localStorage.setItem("user", JSON.stringify('admin'));
+      localStorage.setItem("userRole", JSON.stringify('admin'));
+
 
       navigate("/Home");
   

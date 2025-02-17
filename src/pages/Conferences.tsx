@@ -64,7 +64,7 @@ const Conferences = () => {
         throw new Error("Error registering for the conference.");
       }
       console.log(selectedConference.id,'scid');
-      const registerToConferenceResponse = await fetch(`${API_BACK}/api/attendees/${data.id}/register-to-conference`, {
+      const registerToConferenceResponse = await fetch(`${API_BACK}/api/attendees/register-to-conference/${data.id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -136,7 +136,7 @@ const Conferences = () => {
                     onClick={() => setSelectedConference(conference)}
                     className="text-blue-600 hover:text-blue-800 text-xs underline transition"
                   >
-                    View Details
+                    Register as Attendee
                   </button>
                   </td>
                 </tr>
