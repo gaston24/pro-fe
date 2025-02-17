@@ -29,7 +29,7 @@ const EditConference = () => {
     const fetchSpeakers = async () => {
       try {
         const response = await fetch(`${API_BACK}/api/speakers/`);
-        if (!response.ok) throw new Error("Error al cargar los speakers");
+        if (!response.ok) throw new Error("Error while fetching speakers");
         const data = await response.json();
         setSpeakers(data);
       } catch (error) {
@@ -49,7 +49,7 @@ const EditConference = () => {
     if (response.ok) {
       navigate("/admin/conferences");
     } else {
-      alert("Error al actualizar la conferencia");
+      alert("Error while updating conference");
     }
   };
 
@@ -57,7 +57,7 @@ const EditConference = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <div className="fixed inset-0 flex items-center justify-center">
         <div className="w-full max-w-2xl mx-4 bg-white rounded-lg shadow-lg p-6 overflow-y-auto max-h-[90vh]">
-        <h1 className="text-3xl font-bold text-center text-gray-900 mb-6">Editar Conferencia</h1>
+        <h1 className="text-3xl font-bold text-center text-gray-900 mb-6">Edit Conference</h1>
           
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">

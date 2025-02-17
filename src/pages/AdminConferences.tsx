@@ -57,7 +57,7 @@ const Conferences = () => {
       const encodedUri = encodeURI(csvContent);
       const link = document.createElement("a");
       link.setAttribute("href", encodedUri);
-      link.setAttribute("download", `Asistentes_Conferencia_${conferenceId}.csv`);
+      link.setAttribute("download", `Ateendees_to_Conference_${conferenceId}.csv`);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -160,8 +160,8 @@ const Conferences = () => {
   return (
     <div className="min-h-screen w-screen bg-gray-100">
       <Navbar />
-
       <div className="flex justify-center items-center h-full">
+        
         {deleteModal.open && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
             <div className="bg-white p-6 rounded-lg shadow-lg text-center w-96">
@@ -293,21 +293,21 @@ const Conferences = () => {
                   <button
                     onClick={() => exportAttendees(conference.id)}
                     className="border border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-3 py-2 rounded-lg transition"
-                    title="Listar Asistentes"
+                    title="List of attendees"
                   >
                     <FiDownload size={18} />
                   </button>
                   <button
                     onClick={() => handleEdit(conference.id)}
                     className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-3 py-2 rounded-lg transition"
-                    title="Editar"
+                    title="Edit"
                   >
                     <FiEdit size={18} />
                   </button>
                   <button
                     onClick={() => handleDelete(conference.id)}
                     className="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white px-3 py-2 rounded-lg transition"
-                    title="Eliminar"
+                    title="Delete"
                   >
                     <FiTrash2 size={18} />
                   </button>
@@ -335,7 +335,7 @@ const Conferences = () => {
           value={attendeeName}
           onChange={(e) => setAttendeeName(e.target.value)}
           className="w-full border border-gray-300 p-2 rounded mt-1"
-          placeholder="Ingresa tu nombre"
+          placeholder="Name"
         />
 
         <label className="block text-sm font-medium text-gray-700 mt-2">Email</label>
@@ -344,7 +344,7 @@ const Conferences = () => {
           value={attendeeEmail}
           onChange={(e) => setAttendeeEmail(e.target.value)}
           className="w-full border border-gray-300 p-2 rounded mt-1"
-          placeholder="Ingresa tu email"
+          placeholder="Email"
           required
         />
         {formError && <p className="text-red-500 text-sm mt-2">{formError}</p>}

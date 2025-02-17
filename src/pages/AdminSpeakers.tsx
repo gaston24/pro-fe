@@ -63,31 +63,31 @@ const Speakers = () => {
   return (
     <div className="min-h-screen w-screen bg-gray-100">
       <Navbar />
+      <div className="flex justify-center items-center h-full">
 
       {deleteModal.open && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg text-center w-96">
-            <h2 className="text-2xl font-bold text-red-600">Eliminar Conferenciante</h2>
-            <p className="text-gray-700 mt-2">¿Estás seguro de que quieres eliminar este conferenciante?</p>
+            <h2 className="text-2xl font-bold text-red-600">Delete Speaker</h2>
+            <p className="text-gray-700 mt-2">Do you sure to remove this speaker?</p>
             <div className="mt-4 flex justify-center gap-4">
               <button
                 onClick={() => setDeleteModal({ open: false, id: null })}
                 className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition"
               >
-                Cancelar
+                Cancel
               </button>
               <button
                 onClick={confirmDeleteSpeaker}
                 className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
               >
-                Eliminar
+                Delete
               </button>
             </div>
           </div>
         </div>
       )}
       
-      <div className="flex justify-center items-center h-full">
         <div className="w-full max-w-5xl bg-white p-6 sm:p-8 rounded-xl shadow-lg"
           >
           <h1 className="text-3xl font-bold text-gray-900 mb-4 text-center">

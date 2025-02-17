@@ -27,7 +27,7 @@ const EditSpeaker = () => {
     if (response.ok) {
       navigate("/admin/speakers");
     } else {
-      alert("Error al actualizar el conferenciante");
+      alert("Error while updating speaker");
     }
   };
 
