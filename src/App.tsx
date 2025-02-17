@@ -28,13 +28,13 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/Home" element={<Home />} />
-      <Route path="/conferences" element={<Conferences />} />
-      <Route path="/admin/conferences" element={<AdminConferences />} />
+      <Route path="/Conferences" element={<Conferences />} />
+      <Route path="/Admin/Conferences" element={<AdminConferences />} />
       <Route path="/edit-conference/:id" element={<EditConference />} />
       <Route path="/create-conference" element={<CreateConference />} />
-      <Route path="/admin/speakers" element={<AdminSpeakers />} />
+      <Route path="/Admin/Speakers" element={<AdminSpeakers />} />
       <Route path="/edit-speaker/:id" element={<EditSpeaker />} />
-      <Route path="/registro" element={<Register />} />          
+      <Route path="/Register" element={<Register />} />          
     </Routes>
   );
 }

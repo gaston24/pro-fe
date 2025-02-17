@@ -39,11 +39,11 @@ const Conferences = () => {
   const exportAttendees = async (conferenceId: number) => {
     try {
         const response = await fetch(`${API_BACK}/api/attendees`);
-      if (!response.ok) throw new Error("Error al obtener los asistentes");
+      if (!response.ok) throw new Error("Error getting attendees");
   
       const data = await response.json();
       if (data.length === 0) {
-        alert("No hay asistentes registrados en esta conferencia.");
+        alert("There are no registered attendees for this conference.");
         return;
       }
   
@@ -62,7 +62,7 @@ const Conferences = () => {
       link.click();
       document.body.removeChild(link);
     } catch (error) {
-      alert("Hubo un error al exportar la lista de asistentes.");
+      alert("There was an error exporting the attendee list.");
     }
   };
    
@@ -70,12 +70,12 @@ const Conferences = () => {
     const fetchConferences = async () => {
       try {
         const speakersResponse = await fetch(`${API_BACK}/api/speakers/`);
-        if (!speakersResponse.ok) throw new Error("Error al cargar los speakers");
+        if (!speakersResponse.ok) throw new Error("Error loading speakers");
 
         const speakersData = await speakersResponse.json();
 
         const conferencesResponse = await fetch(`${API_BACK}/api/conferences/`);
-        if (!conferencesResponse.ok) throw new Error("Error al cargar conferencias");
+        if (!conferencesResponse.ok) throw new Error("Error loading conferences");
 
         const conferencesData = await conferencesResponse.json();
 
@@ -100,7 +100,7 @@ const Conferences = () => {
     if (!selectedConference) return;
   
     if (!attendeeName.trim() || !attendeeEmail.trim()) {
-      setFormError("El nombre y el correo electrónico son obligatorios.");
+      setFormError("Name and email are required.");
       return;
     }
   
@@ -117,10 +117,10 @@ const Conferences = () => {
       });
   
       if (!response.ok) {
-        throw new Error("Error al registrarse en la conferencia.");
+        throw new Error("Error registering for the conference.");
       }
   
-      setSuccessMessage("¡Te has registrado exitosamente!");
+      setSuccessMessage("You have successfully registered!");
       setFormError("");
   
       setConferences(prevConferences =>
@@ -137,7 +137,7 @@ const Conferences = () => {
       setTimeout(() => setSuccessMessage(""), 3000);
     } catch (error) {
       console.error(error);
-      setFormError("Hubo un problema al registrarse.");
+      setFormError("There was a problem registering.");
     }
   };
 
@@ -148,12 +148,12 @@ const Conferences = () => {
       const response = await fetch(`${API_BACK}/api/conferences/${deleteModal.id}`, {
         method: "DELETE",
       });
-      if (!response.ok) throw new Error("Error al eliminar la conferencia");
+      if (!response.ok) throw new Error("Error deleting conference");
   
       setConferences(conferences.filter((conference) => conference.id !== deleteModal.id));
       setDeleteModal({ open: false, id: null });
     } catch (err: any) {
-      alert("Hubo un error al eliminar la conferencia.");
+      alert("There was an error deleting the conference.");
     }
   };
 
@@ -165,20 +165,20 @@ const Conferences = () => {
         {deleteModal.open && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
             <div className="bg-white p-6 rounded-lg shadow-lg text-center w-96">
-              <h2 className="text-2xl font-bold text-red-600">Eliminar Conferencia</h2>
-              <p className="text-gray-700 mt-2">¿Estás seguro de que quieres eliminar esta conferencia?</p>
+              <h2 className="text-2xl font-bold text-red-600">Delete Conference</h2>
+              <p className="text-gray-700 mt-2">Are you sure you want to delete this conference?</p>
               <div className="mt-4 flex justify-center gap-4">
                 <button
                   onClick={() => setDeleteModal({ open: false, id: null })}
                   className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition"
                 >
-                  Cancelar
+                  Cancel
                 </button>
                 <button
                   onClick={confirmDeleteConference}
                   className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
                 >
-                  Eliminar
+                  Delete
                 </button>
               </div>
             </div>
@@ -192,30 +192,30 @@ const Conferences = () => {
             className="flex items-center gap-2 bg-green-500 text-white px-3 py-2 rounded-md text-sm hover:bg-green-600 transition"
         >
             <FiPlus size={16} />
-            Nueva Conferencia
+            New Conference
         </button>
         </div>
 
             <h1 className="text-3xl font-bold text-gray-900 mb-4 text-center">
-            Lista de Conferencias
+            Conferences List
             </h1>
-          {loading && <p className="text-center text-gray-600">Cargando...</p>}
+          {loading && <p className="text-center text-gray-600">Loading...</p>}
           {error && <p className="text-center text-red-500">{error}</p>}
           {!loading && !error && conferences.length === 0 && (
-            <p className="text-center text-gray-600">No hay conferencias disponibles</p>
+            <p className="text-center text-gray-600">No conferences to show</p>
           )}
 
           <div className="hidden sm:block overflow-x-auto">
             <table className="w-full table-auto border-collapse border border-gray-200">
               <thead>
               <tr className="bg-black text-white">
-                <th className="border border-gray-300 px-4 py-2">Título</th>
-                <th className="border border-gray-300 px-4 py-2">Resumen</th>
-                <th className="border border-gray-300 px-4 py-2">Fecha y Hora</th>
-                <th className="border border-gray-300 px-4 py-2">Cupos Disponibles</th>
+                <th className="border border-gray-300 px-4 py-2">Title</th>
+                <th className="border border-gray-300 px-4 py-2">Summary</th>
+                <th className="border border-gray-300 px-4 py-2">Date</th>
+                <th className="border border-gray-300 px-4 py-2">Available Places</th>
                 <th className="border border-gray-300 px-4 py-2">Link</th>
                 <th className="border border-gray-300 px-4 py-2">Speaker</th>
-                <th className="border border-gray-300 px-4 py-2">Acción</th>
+                <th className="border border-gray-300 px-4 py-2">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -248,21 +248,21 @@ const Conferences = () => {
                       <button
                         onClick={() => exportAttendees(conference.id)}
                         className="border border-green-500 text-green-500 hover:bg-green-500 hover:text-white p-2 rounded-lg transition-colors"
-                        title="Listar Asistentes"
+                        title="List of attendees"
                       >
                         <FiDownload size={18} />
                       </button>
                       <button
                         onClick={() => handleEdit(conference.id)}
                         className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white p-2 rounded-lg transition-colors"
-                        title="Editar"
+                        title="Edit"
                       >
                         <FiEdit size={18} />
                       </button>
                       <button
                         onClick={() => handleDelete(conference.id)}
                         className="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white p-2 rounded-lg transition-colors"
-                        title="Eliminar"
+                        title="Delete"
                       >
                         <FiTrash2 size={18} />
                       </button>
@@ -280,16 +280,13 @@ const Conferences = () => {
                 <h3 className="text-lg font-bold text-gray-900">{conference.title}</h3>
                 <p className="text-sm text-gray-600 mt-1">{conference.summary}</p>
                 <p className="text-sm text-gray-600 mt-1">
-                  <span className="font-semibold text-gray-700">📅 Fecha:</span> {new Date(conference.date_time).toLocaleString()}
+                  <span className="font-semibold text-gray-700">Date:</span> {new Date(conference.date_time).toLocaleString()}
                 </p>
                 <p className="text-sm text-gray-600 mt-1">
-                  <span className="font-semibold text-gray-700">🎟 Cupos Disponibles:</span> {conference.capacity}
-                </p>
-                <p className="text-sm text-gray-600 mt-1">
-                  <span className="font-semibold text-gray-700">🎤 Speaker:</span> {conference.speaker_name}
+                  <span className="font-semibold text-gray-700">Available Places:</span> {conference.capacity}
                 </p>
                 <a href={conference.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
-                  Ver Conferencia
+                  Show Conference
                 </a>
 
                 <div className="flex justify-end gap-2 mt-3">
@@ -326,10 +323,10 @@ const Conferences = () => {
       <h2 className="text-2xl font-bold text-gray-900">{selectedConference.title}</h2>
       <p className="text-gray-700 mt-2">{selectedConference.summary}</p>
       <p className="text-gray-600 mt-2">
-        <strong>Fecha y Hora:</strong> {new Date(selectedConference.date_time).toLocaleString()}
+        <strong>Date:</strong> {new Date(selectedConference.date_time).toLocaleString()}
       </p>
       <p className="text-gray-600 mt-2">
-        <strong>Cupos Disponibles:</strong> {selectedConference.capacity}
+        <strong>Available Places:</strong> {selectedConference.capacity}
       </p>
       <div className="mt-4">
         <label className="block text-sm font-medium text-gray-700">Nombre</label>
@@ -341,7 +338,7 @@ const Conferences = () => {
           placeholder="Ingresa tu nombre"
         />
 
-        <label className="block text-sm font-medium text-gray-700 mt-2">Correo Electrónico</label>
+        <label className="block text-sm font-medium text-gray-700 mt-2">Email</label>
         <input
           type="email"
           value={attendeeEmail}
@@ -361,7 +358,7 @@ const Conferences = () => {
           rel="noopener noreferrer"
           className="text-blue-600 underline"
         >
-          Ir a la Conferencia
+          Go to Conference
         </a>
         <button
           onClick={registerForConference}
@@ -377,13 +374,13 @@ const Conferences = () => {
             !!successMessage
           }
         >
-          Registrarse como Asistente
+          Register Now
         </button>
         <button
           onClick={() => setSelectedConference(null)}
           className="bg-red-500 text-white px-4 py-2 rounded"
         >
-          Cerrar
+          Close
         </button>
       </div>
     </div>

@@ -53,7 +53,7 @@ const CreateConference = () => {
               onClick={() => navigate("/admin/conferences")}
               className="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
             >
-              Ir a la lista de conferencias
+              Go to Conferences
             </button>
           </div>
         </div>
@@ -65,7 +65,7 @@ const CreateConference = () => {
   
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <label className="block text-lg font-medium text-gray-700">Título</label>
+              <label className="block text-lg font-medium text-gray-700">Title</label>
               <input
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-lg"
                 value={conference.title}
@@ -75,7 +75,7 @@ const CreateConference = () => {
             </div>
   
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Resumen</label>
+              <label className="block text-sm font-medium text-gray-700">Summary</label>
               <textarea
                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                 value={conference.summary}
@@ -85,7 +85,7 @@ const CreateConference = () => {
             </div>
   
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Fecha y Hora</label>
+              <label className="block text-sm font-medium text-gray-700">Date</label>
               <input
                 type="datetime-local"
                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
@@ -96,7 +96,7 @@ const CreateConference = () => {
             </div>
   
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Cupos</label>
+              <label className="block text-sm font-medium text-gray-700">Available Places</label>
               <input
                 type="number"
                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
@@ -107,7 +107,7 @@ const CreateConference = () => {
             </div>
   
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">Link de la Conferencia</label>
+              <label className="block text-sm font-medium text-gray-700">Link to Conference</label>
               <input
                 type="url"
                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"

@@ -53,8 +53,8 @@ const Register = () => {
       {showSuccessModal && (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
         <div className="bg-white p-6 rounded-lg shadow-lg text-center w-96">
-          <h2 className="text-2xl font-bold text-green-600">¡Registro Exitoso!</h2>
-          <p className="text-gray-700 mt-2">Ahora puedes iniciar sesión.</p>
+          <h2 className="text-2xl font-bold text-green-600">Register Succesfull</h2>
+          <p className="text-gray-700 mt-2">You can now login.</p>
           <button
             onClick={() => navigate("/login")}
             className="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
@@ -65,10 +65,10 @@ const Register = () => {
       </div>
     )}
       <div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-gray-100 p-8 sm:p-12 rounded-xl shadow-xl">
-      <h2 className="text-center text-3xl font-bold text-black mb-6">Regístrate</h2>
+      <h2 className="text-center text-3xl font-bold text-black mb-6">Register</h2>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
-          <label className="block text-sm font-medium text-gray-800 mb-1">Nombre</label>
+          <label className="block text-sm font-medium text-gray-800 mb-1">Name</label>
           <input
             type="text"
             required
@@ -86,11 +86,11 @@ const Register = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-              placeholder="correo@ejemplo.com"
+              placeholder="email@example.com"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
             <input
               type="password"
               required
@@ -101,7 +101,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Confirmar Contraseña</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
             <input
               type="password"
               required
@@ -119,13 +119,13 @@ const Register = () => {
               isLoading ? "bg-gray-500" : "bg-black hover:bg-gray-800"
             }`}
           >
-            {isLoading ? "Cargando..." : "Registrarse"}
+            {isLoading ? "Loading..." : "Register"}
           </button>
         </form>
         <p className="text-center text-sm text-gray-600 mt-4">
-          ¿Ya tienes una cuenta?{' '}
+        Already have an account?{' '}
           <a href="/login" className="text-black hover:text-gray-700 font-medium">
-            Inicia sesión
+            Login
           </a>
         </p>
       </div>

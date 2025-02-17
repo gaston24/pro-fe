@@ -22,7 +22,7 @@ const Login = () => {
   
     try {
       console.log("API_URL", API_BACK, email, password);
-      const response = await fetch(`http://127.0.0.1:8000/api/login`, {
+      const response = await fetch(`${API_BACK}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-3 border border-gray-400 rounded-md shadow-sm focus:ring-gray-600 focus:border-gray-600"
-            placeholder="correo@ejemplo.com"
+            placeholder="email@example.com"
           />
           </div>
           <div>

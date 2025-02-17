@@ -1,22 +1,18 @@
 version: '3.8'
 
 services:
-  catalogo-web:
+  conferences-fe:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: catalogo-web
+    container_name: conferences-fe
     ports:
       - "5173:5173"
     environment:
-      - NODE_ENV=production
-      - VITE_HOST=82.29.58.50
+      - NODE_ENV=development
+      - VITE_HOST=0.0.0.0
     volumes:
-      - .env:/usr/share/nginx/html/.env:ro
+      - .:/app # Montar todo el código dentro del contenedor
+      - /app/node_modules # Evita sobrescribir los node_modules del contenedor
     restart: unless-stopped
-    networks:
-      - wms-network
-
-networks:
-  wms-network:
-    external: true
+    command: ["yarn", "dev", "--host"]

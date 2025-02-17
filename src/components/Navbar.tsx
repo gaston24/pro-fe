@@ -18,19 +18,19 @@ const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { label: "Conferencias", route: "/conferences", icon: Users, color: "text-blue-600", visibleFor: ["administrador", "vendedor", "cliente"] },
-    { label: "Administrar Conferencias", route: "/admin/conferences", icon: FileText, color: "text-yellow-600", visibleFor: ["administrador"] },
-    { label: "Administrar Conferenciantes", route: "/admin/speakers", icon: FileText, color: "text-red-600", visibleFor: ["administrador"] }
+    { label: "Conferences", route: "/Conferences", icon: Users, color: "text-blue-600", visibleFor: ["admin", "public"] },
+    { label: "Conferences Manage", route: "/Admin/Conferences", icon: FileText, color: "text-yellow-600", visibleFor: ["admin"] },
+    { label: "Speakers Manage", route: "/Admin/Speakers", icon: FileText, color: "text-red-600", visibleFor: ["admin"] }
   ];
 
   return (
-    <nav className="w-full bg-gray-50 shadow-sm py-3 px-4">
+    <nav className="w-full bg-gray-50 shadow-sm py-3 px-4 mb-5">
       
       <div className="hidden lg:flex w-full max-w-[1200px] mx-auto items-center justify-between">
         <div className="flex gap-6 flex-grow justify-center">
           <Link to="/home" className="flex items-center text-blue-600 hover:opacity-80">
             <Home className="w-5 h-5" />
-            <span className="ml-2 text-sm font-medium">Inicio</span>
+            <span className="ml-2 text-sm font-medium">Home</span>
           </Link>
 
           {navLinks.map(link => (
