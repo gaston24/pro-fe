@@ -34,13 +34,14 @@ const Home: React.FC = () => {
         <Icons.LogOut className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6" />
       </button>
 
-      <div className="w-full flex justify-center mb-12">
+      <div className="w-full flex justify-center mb-8 md:mb-12 lg:mb-16">
         <img 
           src="logo.png" 
-          alt="Logo Empresa" 
-          className="w-[250px] h-28 object-contain md:w-[300px] md:h-32 lg:w-[500px] lg:h-48"
+          alt="Logo Conference" 
+          className="w-[280px] h-32 object-contain md:w-[350px] md:h-40 lg:w-[550px] lg:h-60"
         />
       </div>
+
 
       <div className="w-full flex items-center justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full max-w-4xl">
@@ -53,19 +54,19 @@ const Home: React.FC = () => {
                   key={btn.label}
                   onClick={() => navigate(btn.route)}
                   className={`
-                    ${btn.color} text-white rounded-lg p-4 md:p-5 lg:p-7
-                    transform transition-all duration-300 
-                    hover:-translate-y-2 hover:shadow-xl 
-                    flex flex-col items-center justify-center 
-                    space-y-2 group text-base md:text-lg lg:text-lg
+                    ${btn.color} text-white font-semibold relative 
+                    px-12 py-5 md:px-16 md:py-6 lg:px-20 lg:py-8 
+                    rounded-xl overflow-hidden transition-all duration-300 
+                    hover:-translate-y-2 hover:shadow-2xl 
+                    flex flex-col items-center justify-center
+                    border border-transparent
+                    before:absolute before:inset-0 before:border before:border-transparent 
+                    before:rounded-xl before:transition-all before:duration-500 
+                    hover:before:border-white
                   `}
                 >
-                  <Icon 
-                    className="w-8 h-8 md:w-9 md:h-9 lg:w-12 lg:h-12 text-white group-hover:scale-110 transition-transform"
-                  />
-                <span className="text-lg md:text-lg lg:text-2xl font-semibold">
-                  {btn.label}
-                </span>
+                  <Icon className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 text-white" />
+                  <span className="text-lg md:text-xl lg:text-2xl font-bold">{btn.label}</span>
                 </button>
               );
             })}
