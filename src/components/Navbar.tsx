@@ -18,9 +18,9 @@ const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { label: "Conferencias", route: "/conferences", icon: Users, color: "text-blue-600", visibleFor: ["administrador", "vendedor", "cliente"] },
-    { label: "Administrar Conferencias", route: "/admin/conferences", icon: FileText, color: "text-yellow-600", visibleFor: ["administrador"] },
-    { label: "Administrar Conferenciantes", route: "/admin/speakers", icon: FileText, color: "text-red-600", visibleFor: ["administrador"] }
+    { label: "Conferences", route: "/Conferences", icon: Users, color: "text-blue-600", visibleFor: ["admin", "public"] },
+    { label: "Conferences Manage", route: "/Admin/Conferences", icon: FileText, color: "text-yellow-600", visibleFor: ["admin"] },
+    { label: "Speakers Manage", route: "/Admin/Speakers", icon: FileText, color: "text-red-600", visibleFor: ["admin"] }
   ];
 
   return (

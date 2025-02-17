@@ -29,7 +29,7 @@ const Home: React.FC = () => {
           transition-all duration-300 hover:scale-110
           p-1 sm:p-2 md:p-3 lg:p-3
         "
-        title="Cerrar Sesión"
+        title="Logout"
       >
         <Icons.LogOut className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6" />
       </button>

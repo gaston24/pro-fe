@@ -1,25 +1,25 @@
 {
     "buttons": [
       {
-        "label": "Conferencias",
-        "route": "/conferences",
+        "label": "Conferences",
+        "route": "/Conferences",
         "icon": "Users",
         "color": "bg-blue-600",
-        "visibleFor": ["administrador", "publico"]
+        "visibleFor": ["admin", "public"]
       },          
       {
-        "label": "Administrar Conferencias",
-        "route": "/admin/conferences",
+        "label": "Conferences Manage",
+        "route": "/Admin/Conferences",
         "icon": "PlusSquare",
         "color": "bg-yellow-700",
-        "visibleFor": ["administrador"]
+        "visibleFor": ["admin"]
       },
       {
-        "label": "Administrar Conferenciantes",
-        "route": "/admin/Speakers",
+        "label": "Speakers Manage",
+        "route": "/Admin/Speakers",
         "icon": "FileText",
         "color": "bg-red-600",
-        "visibleFor": ["administrador"]
+        "visibleFor": ["admin"]
       }
     ]
 }
